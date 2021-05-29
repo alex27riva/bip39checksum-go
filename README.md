@@ -4,6 +4,7 @@ A simple program written in Go to find the last BIP39 mnemonic word (checksum).
 
 This program test all possible words and print them.
 
+![Program running in terminal](Screenshot.png)
 
 Inspired by: [GitHub - massmux/bip39checksum: BIP39 checksum word finder](https://github.com/massmux/bip39checksum)
 
