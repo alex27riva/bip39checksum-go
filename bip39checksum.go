@@ -13,7 +13,7 @@ import (
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Print("Please insert your mnemonic phrase: ")
+	fmt.Print("Please insert 11 or 23 BIP39 words: ")
 	input, _ := reader.ReadString('\n')
 	words := brute(input)
 	n := len(words)

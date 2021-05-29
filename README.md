@@ -11,8 +11,6 @@ Inspired by: [GitHub - massmux/bip39checksum: BIP39 checksum word finder](https:
 
 `go get github.com/tyler-smith/go-bip39`
 
-
-
 ## How to run
 
 ### Run the program yourself
@@ -23,8 +21,13 @@ Inspired by: [GitHub - massmux/bip39checksum: BIP39 checksum word finder](https:
 
 1. `chmod +x bip39checksum.go`
 
-2. ./bip39checksum
+2. `./bip39checksum`
 
+## Verify signature
+1. Get my GPG key (link)
+2. Calculate SHA256 hash of the binary: `sha256sum bip39checksum`
+3. Check that the hash is the same in the signature.txt.asc file
+4. Verify the signature: `gpg --verify signature.txt.asc`
 
 
 ## Disclamer
