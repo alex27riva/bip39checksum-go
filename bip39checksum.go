@@ -7,22 +7,18 @@ import (
 	"os"
 )
 
-// 23 words for testing
-// loud omit domain valve topic engine velvet chat foil few wrap unable practice snap gift version brass board broom loud amateur cabin toss
-
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-
-	fmt.Print("Please insert 11 or 23 BIP39 words: ")
+	fmt.Print("Please enter 11 or 23 BIP39 words: ")
 	input, _ := reader.ReadString('\n')
 	words := brute(input)
-	n := len(words)
+	mnemonicLen := len(words)
 
-	if n > 0 {
-		fmt.Println("\nPossible last words for this mnemonic: ")
-		PrintWords(words)
+	if mnemonicLen > 0 {
+		fmt.Printf("\nThere are %v last words valid for this mnemonic: \n\n", mnemonicLen)
+		printWords(words)
 	} else {
-		fmt.Println("Mnemonic invalid")
+		fmt.Println("The mnemonic phrase you entered is not valid.")
 	}
 
 }
@@ -33,18 +29,19 @@ func brute(mnemonic string) []string {
 
 	for _, word := range english {
 		current := mnemonic + " " + word
-		valid := bip39.IsMnemonicValid(current)
+		isValid := bip39.IsMnemonicValid(current)
 
-		if valid {
+		if isValid {
 			valid_words = append(valid_words, word)
 		}
 	}
 	return valid_words
 }
 
-func PrintWords(arr []string) {
+func printWords(arr []string) {
 	for _, w := range arr {
 		fmt.Printf("- %s\n", w)
 	}
+	fmt.Println()
 
 }
