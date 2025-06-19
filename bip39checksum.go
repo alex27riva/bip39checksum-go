@@ -3,14 +3,15 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/fatih/color"
-	"github.com/tyler-smith/go-bip39"
 	"os"
 	"strings"
+
+	"github.com/alex27riva/go-bip39"
+	"github.com/fatih/color"
 )
 
 const (
-	prompt = "Please enter 11 or 23 BIP39 words: "
+	prompt = "Please enter your mnemonic phrase to recover the last word: "
 )
 
 func main() {
@@ -27,31 +28,16 @@ func main() {
 	nWords := countWords(mnemonic)
 
 	switch nWords {
-	case 11, 23:
-		possibleWords := brute(mnemonic)
+	case 11, 14, 17, 20, 23:
+		possibleWords := bip39.FindLastWords(mnemonic)
 		color.Blue("\nThere are %v last words valid for this mnemonic: \n", len(possibleWords))
 		printWords(possibleWords)
-	case 12, 24:
+	case 12, 15, 18, 21, 24:
 		color.Green("You already have the last word!")
 	default:
 		color.Red("The mnemonic phrase you entered is not valid.")
 	}
 
-}
-
-func brute(mnemonic string) []string {
-	english := bip39.GetWordList()
-	var validWords []string
-
-	for _, word := range english {
-		current := mnemonic + " " + word
-		isValid := bip39.IsMnemonicValid(current)
-
-		if isValid {
-			validWords = append(validWords, word)
-		}
-	}
-	return validWords
 }
 
 func printWords(arr []string) {
