@@ -1,10 +1,12 @@
 module bip39checksum-go
 
-go 1.23.4
+go 1.24
+
+toolchain go1.24.4
 
 require (
+	github.com/alex27riva/go-bip39 v0.1.2
 	github.com/fatih/color v1.18.0
-	github.com/tyler-smith/go-bip39 v1.1.0
 )
 
 require (

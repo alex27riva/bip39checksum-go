@@ -8,15 +8,11 @@ This program test all possible words and print them.
 
 Inspired by: [GitHub - massmux/bip39checksum: BIP39 checksum word finder](https://github.com/massmux/bip39checksum)
 
-## Dependencies
-
-`go get github.com/tyler-smith/go-bip39`
-
 ## How to run
 
 ### Run the program yourself
 
-`go run bip39checksum.go`
+`go run main.go`
 
 ### Use the compiled binary (Linux)
 
