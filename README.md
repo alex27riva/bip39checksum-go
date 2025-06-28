@@ -12,7 +12,7 @@ Inspired by: [GitHub - massmux/bip39checksum: BIP39 checksum word finder](https:
 
 ### Run the program yourself
 
-`go run bip39checksum.go`
+`go run main.go`
 
 ### Use the compiled binary (Linux)
 
