@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	prompt = "Please enter your mnemonic phrase to recover the last word: "
+	prompt = "Please enter your mnemonic phrase to recover the last two words: "
 )
 
 func main() {
@@ -28,12 +28,12 @@ func main() {
 	nWords := countWords(mnemonic)
 
 	switch nWords {
-	case 11, 14, 17, 20, 23:
-		possibleWords := bip39.FindLastWords(mnemonic)
+	case 10, 13, 16, 19, 22:
+		possibleWords := bip39.FindLastWords(mnemonic, 2)
 		color.Blue("\nThere are %v last words valid for this mnemonic: \n", len(possibleWords))
 		printWords(possibleWords)
 	case 12, 15, 18, 21, 24:
-		color.Green("You already have the last word!")
+		color.Green("You already have the last two words!")
 	default:
 		color.Red("The mnemonic phrase you entered is not valid.")
 	}
